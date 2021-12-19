@@ -1,10 +1,20 @@
 {
   "name": "katana-assignment",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Card deck utility API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "watch": "tsc-watch --onSuccess \"node ./dist/demo.js\"",
+    "lint": "eslint src --ext .js,.ts",
+    "prepare": "husky install",
+    "test": "jest --watch",
+    "release": "standard-version"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   },
   "repository": {
     "type": "git",
@@ -15,5 +25,26 @@
   "bugs": {
     "url": "https://github.com/iamarthurk/katana-assignment/issues"
   },
-  "homepage": "https://github.com/iamarthurk/katana-assignment#readme"
+  "homepage": "https://github.com/iamarthurk/katana-assignment#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
+    "@tsconfig/recommended": "^1.0.1",
+    "@types/jest": "^27.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.7.0",
+    "@typescript-eslint/parser": "^5.7.0",
+    "cz-conventional-changelog": "3.3.0",
+    "eslint": "^8.5.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "husky": "^7.0.4",
+    "jest": "^27.4.5",
+    "prettier": "^2.5.1",
+    "pretty-quick": "^3.1.2",
+    "standard-version": "^9.3.2",
+    "supertest": "^6.1.6",
+    "ts-jest": "^27.1.2",
+    "tsc-watch": "^4.5.0",
+    "typescript": "^4.5.4"
+  }
 }
