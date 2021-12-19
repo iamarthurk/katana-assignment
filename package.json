@@ -1,0 +1,19 @@
+{
+  "name": "katana-assignment",
+  "version": "0.0.0",
+  "description": "Card deck utility API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamarthurk/katana-assignment.git"
+  },
+  "author": "Arthur K",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamarthurk/katana-assignment/issues"
+  },
+  "homepage": "https://github.com/iamarthurk/katana-assignment#readme"
+}
