@@ -1,6 +1,6 @@
 {
   "name": "katana-assignment",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "Card deck utility API",
   "main": "index.js",
   "scripts": {
