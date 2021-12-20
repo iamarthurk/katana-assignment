@@ -12,7 +12,7 @@ export function validateMiddleware<T extends BaseSchema>(resouceSchema: T) {
     try {
       await resouceSchema.validate(resource);
       next();
-    } catch (e) {
+    } catch (e: any) {
       res.status(400).json({ error: e.errors.join('\n') });
     }
   };

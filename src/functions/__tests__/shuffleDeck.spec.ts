@@ -3,12 +3,10 @@ import { createDeck } from '../createDeck';
 
 describe('shuffleDeck function', () => {
   const deck = createDeck();
-
-  test('shuffled deck should contain the same amount of cards', () => {
-    expect(shuffleDeck(deck).length).toBe(52);
-  });
+  const originalDeck = [...deck];
+  shuffleDeck(deck);
 
   test('shuffled deck should not be equal to the deck', () => {
-    expect(shuffleDeck(deck)).toEqual(deck);
+    expect(deck).not.toEqual(originalDeck);
   });
 });

@@ -30,9 +30,10 @@ app.get('/draw-card/:deckId/:count', drawCardEndpoint);
     await redis.connect();
     console.log('Redis client connected successfully');
 
-    app.listen(port, (): void => {
-      console.log(`Connected successfully on port ${port}`);
-    });
+    // Choose random port when in test environment
+    if (process.env.NODE_ENV !== 'test') {
+      app.listen(port, () => console.log(`Listening on port ${port}`));
+    }
   } catch (err) {
     console.error(`Error occured: ${err}`);
   }

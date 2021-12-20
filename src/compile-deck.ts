@@ -23,8 +23,8 @@ const values = [
 
 const compiledDeck: CompiledDeck = {};
 
-for (let value of values) {
-  for (let suit of suites) {
+for (const value of values) {
+  for (const suit of suites) {
     const code = `${value[0]}${suit[0]}`;
 
     Object.defineProperty(compiledDeck, code, {
