@@ -1,25 +1,39 @@
-import express, { Application, Request, Response } from 'express';
-import rClient from './r-client';
+import express, { Application } from 'express';
+import redis from './redis';
+import './compile-deck';
 
-const app: Application = express();
+// Endpoints
+import { createDeckEndpoint, createDeckSchema } from './endpoints/create-deck';
+import { drawCardEndpoint } from './endpoints/draw-card';
+import { openDeckEndpoint } from './endpoints/open-deck';
+import { validateMiddleware } from './endpoints/validate';
+
+export const app: Application = express();
 const port = 3000;
 
+// Configure http server
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', async (req: Request, res: Response): Promise<Response> => {
-  return res.status(200).send({ message: 'Hello World!' });
-});
+app.post(
+  '/create-deck',
+  validateMiddleware(createDeckSchema),
+  createDeckEndpoint,
+);
 
+app.get('/open-deck/:deckId', openDeckEndpoint);
+app.get('/draw-card/:deckId/:count', drawCardEndpoint);
+
+// Start redis client and http server
 (async () => {
   try {
-    await rClient.connect();
+    await redis.connect();
     console.log('Redis client connected successfully');
 
     app.listen(port, (): void => {
       console.log(`Connected successfully on port ${port}`);
     });
-  } catch (err: any) {
-    console.error(`Error occured: ${err.message}`);
+  } catch (err) {
+    console.error(`Error occured: ${err}`);
   }
 })();
